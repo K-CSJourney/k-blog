@@ -1,0 +1,55 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- 定义渐变 -->
+    <defs>
+        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+
+    <!-- 外层六边形框架 -->
+    <polygon points="100,20 170,60 170,140 100,180 30,140 30,60"
+             fill="none"
+             stroke="url(#gradient1)"
+             stroke-width="3"
+             opacity="0.8"/>
+
+    <!-- 内层代码符号 </> -->
+    <g transform="translate(100, 100)">
+        <!-- 左尖括号 < -->
+        <path d="M -35,-25 L -55,-5 L -55,5 L -35,25"
+              fill="none"
+              stroke="url(#gradient1)"
+              stroke-width="6"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+
+        <!-- 右尖括号 > -->
+        <path d="M 35,-25 L 55,-5 L 55,5 L 35,25"
+              fill="none"
+              stroke="url(#gradient1)"
+              stroke-width="6"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+
+        <!-- 中间斜线 / -->
+        <line x1="-10" y1="30" x2="10" y2="-30"
+              stroke="url(#gradient2)"
+              stroke-width="6"
+              stroke-linecap="round"/>
+    </g>
+
+    <!-- 装饰性二进制代码点 -->
+    <circle cx="85" cy="45" r="2.5" fill="#667eea" opacity="0.6"/>
+    <circle cx="115" cy="45" r="2.5" fill="#764ba2" opacity="0.6"/>
+    <circle cx="145" cy="75" r="2.5" fill="#f093fb" opacity="0.6"/>
+    <circle cx="145" cy="125" r="2.5" fill="#f5576c" opacity="0.6"/>
+    <circle cx="115" cy="155" r="2.5" fill="#667eea" opacity="0.6"/>
+    <circle cx="85" cy="155" r="2.5" fill="#764ba2" opacity="0.6"/>
+    <circle cx="55" cy="125" r="2.5" fill="#f093fb" opacity="0.6"/>
+    <circle cx="55" cy="75" r="2.5" fill="#f5576c" opacity="0.6"/>
+</svg>
