@@ -4,6 +4,8 @@ import { SignUp } from '@/pages/auth/SignUp.tsx';
 import signupAction from '@/routes/actions/auth/signup.ts';
 import loginAction from '@/routes/actions/auth/login.ts';
 import refreshTokenLoader from '@/routes/loaders/refreshToken.ts';
+import { RootLayout } from '@/components/layouts/Root.tsx';
+import settingsAction from '@/routes/actions/user/settings.ts';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
+    Component: RootLayout,
     children: [
       {
         index: true,
@@ -59,6 +62,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/settings',
+    action: settingsAction,
   },
 ]);
 
