@@ -8,6 +8,10 @@ import { RootLayout } from '@/components/layouts/Root';
 import settingsAction from '@/routes/actions/user/settings.ts';
 import { Home } from '@/pages/user/Home';
 import homeLoader from '@/routes/loaders/user/home.ts';
+import { Blogs } from '@/pages/user/Blogs.tsx';
+import blogsLoader from '@/routes/loaders/user/blogs.ts';
+import { BlogDetail } from '@/pages/user/BlogDetail.tsx';
+import blogDetailLoader from '@/routes/loaders/user/blogDetail.ts';
 
 const router = createBrowserRouter([
   {
@@ -35,9 +39,13 @@ const router = createBrowserRouter([
       },
       {
         path: 'blogs',
+        Component: Blogs,
+        loader: blogsLoader,
       },
       {
         path: 'blogs/:slug',
+        Component: BlogDetail,
+        loader: blogDetailLoader,
       },
     ],
   },

@@ -83,7 +83,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           </Tooltip>
         </div>
         <Link
-          to={`blogs/${slug}`}
+          to={`/blogs/${slug}`}
           viewTransition
         >
           <CardTitle
