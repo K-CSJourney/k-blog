@@ -9,6 +9,7 @@ import settingsAction from '@/routes/actions/user/settings.ts';
 import { Home } from '@/pages/user/Home';
 import homeLoader from '@/routes/loaders/user/home.ts';
 import { Blogs } from '@/pages/user/Blogs.tsx';
+import { Blogs as AdminBlogs } from '@/pages/admin/Blogs.tsx';
 import blogsLoader from '@/routes/loaders/user/blogs.ts';
 import { BlogDetail } from '@/pages/user/BlogDetail.tsx';
 import blogDetailLoader from '@/routes/loaders/user/blogDetail.ts';
@@ -20,6 +21,7 @@ import dashboardLoader from '@/routes/loaders/admin/dashboard.ts';
 import blogEditAction from '@/routes/actions/admin/blogEdit.ts';
 import blogAction from '@/routes/actions/admin/blogAction.ts';
 import allUserAction from '@/routes/actions/admin/user.ts';
+import allBlogLoader from '@/routes/loaders/admin/allBlog.ts';
 
 const router = createBrowserRouter([
   {
@@ -71,8 +73,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'blogs',
+        Component: AdminBlogs,
         handle: { breadcrumb: 'Blogs' },
         action: blogAction,
+        loader: allBlogLoader,
       },
       {
         path: 'blogs/create',

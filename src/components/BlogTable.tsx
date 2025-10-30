@@ -1,16 +1,17 @@
+import type { ColumnDef } from '@tanstack/react-table';
 import {
-  type CellContext,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import type { Variants } from 'motion/react';
 import { motion } from 'motion/react';
 import { Editor } from '@tiptap/react';
 import { formatDistanceToNowStrict } from 'date-fns';
 import { cn, getUsername } from '@/lib/utils';
 import StarterKit from '@tiptap/starter-kit';
 import { useMemo } from 'react';
-import { MoreHorizontalIcon, Loader2Icon } from 'lucide-react';
+import { Loader2Icon, MoreHorizontalIcon } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -41,12 +42,10 @@ import {
 } from '@/components/ui/alert-dialog.tsx';
 import {
   Tooltip,
-  TooltipTrigger,
   TooltipContent,
+  TooltipTrigger,
 } from '@/components/ui/tooltip.tsx';
-import type { ColumnDef } from '@tanstack/react-table';
 import type { Blog, User } from '@/types';
-import type { Variants } from 'motion/react';
 import { Link, useFetcher } from 'react-router';
 import Avatar from 'react-avatar';
 
@@ -203,7 +202,7 @@ export const columns: ColumnDef<Blog>[] = [
   {
     accessorKey: 'title',
     header: 'Blog',
-    cell: ({ row }: CellContext<Blog>) => {
+    cell: ({ row }) => {
       const blog = row.original;
       const editor = new Editor({
         extensions: [StarterKit],
@@ -213,7 +212,7 @@ export const columns: ColumnDef<Blog>[] = [
       });
       return (
         <Link
-          to={`blogs/${blog.slug}`}
+          to={`/blogs/${blog.slug}`}
           className='flex items-center gap-4 group'
           viewTransition
         >
@@ -241,7 +240,7 @@ export const columns: ColumnDef<Blog>[] = [
   {
     accessorKey: 'author',
     header: 'Author',
-    cell: ({ row }: CellContext<Blog>) => {
+    cell: ({ row }) => {
       const author = row.getValue('author') as User;
       return (
         <div className='flex items-center gap-2'>
@@ -258,7 +257,7 @@ export const columns: ColumnDef<Blog>[] = [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }: CellContext<Blog>) => {
+    cell: ({ row }) => {
       const status = row.getValue('status') as 'draft' | 'published';
       return (
         <Badge
@@ -286,7 +285,7 @@ export const columns: ColumnDef<Blog>[] = [
   {
     accessorKey: 'updatedAt',
     header: 'Last update',
-    cell: ({ row }: CellContext<Blog>) => {
+    cell: ({ row }) => {
       const updatedAt = row.getValue('updatedAt') as string;
       const date = formatDistanceToNowStrict(updatedAt, {
         addSuffix: true,
@@ -309,9 +308,7 @@ export const columns: ColumnDef<Blog>[] = [
   {
     id: 'actions',
     enableHiding: true,
-    cell: ({ row }: CellContext<Blog>) => (
-      <BlogActionDropdown blog={row.original} />
-    ),
+    cell: ({ row }) => <BlogActionDropdown blog={row.original} />,
   },
 ];
 
