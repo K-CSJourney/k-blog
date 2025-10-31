@@ -24,6 +24,8 @@ import allUserAction from '@/routes/actions/admin/user.ts';
 import allBlogLoader from '@/routes/loaders/admin/allBlog.ts';
 import { Comments } from '@/pages/admin/Comments.tsx';
 import allCommentLoader from '@/routes/loaders/admin/comments.ts';
+import allUserLoader from '@/routes/loaders/admin/users.ts';
+import { Users as AdminUser } from '@/pages/admin/Users.tsx';
 
 const router = createBrowserRouter([
   {
@@ -97,8 +99,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'users',
+        Component: AdminUser,
         handle: { breadcrumb: 'Users' },
         action: allUserAction,
+        loader: allUserLoader,
       },
     ],
   },
