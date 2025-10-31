@@ -22,6 +22,8 @@ import blogEditAction from '@/routes/actions/admin/blogEdit.ts';
 import blogAction from '@/routes/actions/admin/blogAction.ts';
 import allUserAction from '@/routes/actions/admin/user.ts';
 import allBlogLoader from '@/routes/loaders/admin/allBlog.ts';
+import { Comments } from '@/pages/admin/Comments.tsx';
+import allCommentLoader from '@/routes/loaders/admin/comments.ts';
 
 const router = createBrowserRouter([
   {
@@ -89,7 +91,9 @@ const router = createBrowserRouter([
       },
       {
         path: 'comments',
+        Component: Comments,
         handle: { breadcrumb: 'Comments' },
+        loader: allCommentLoader,
       },
       {
         path: 'users',

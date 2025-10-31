@@ -4,9 +4,9 @@ import { blogApi } from '@/api';
 import { AxiosError } from 'axios';
 
 const allBlogLoader: LoaderFunction = async ({ request }) => {
-  const utl = new URL(request.url);
-  const offset = utl.searchParams.get('offset') ?? 0;
-  const limit = utl.searchParams.get('limit') ?? 10;
+  const url = new URL(request.url);
+  const offset = url.searchParams.get('offset') ?? 0;
+  const limit = url.searchParams.get('limit') ?? 10;
   try {
     const response = await blogApi.get('/blog', {
       params: { offset, limit },
