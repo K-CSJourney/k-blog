@@ -153,7 +153,7 @@ export const Dashboard = () => {
               </Button>
             </CardAction>
           </CardHeader>
-          <CardContent className='px-4'>
+          <CardContent className='px-4 space-y-2'>
             {loaderData.users.map(
               ({
                 _id,

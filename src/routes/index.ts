@@ -26,6 +26,9 @@ import { Comments } from '@/pages/admin/Comments.tsx';
 import allCommentLoader from '@/routes/loaders/admin/comments.ts';
 import allUserLoader from '@/routes/loaders/admin/users.ts';
 import { Users as AdminUser } from '@/pages/admin/Users.tsx';
+import { BlogCreate } from '@/pages/admin/BlogCreate.tsx';
+import blogCreateAction from '@/routes/actions/admin/blogCreate.ts';
+import { BlogEdit } from '@/pages/admin/BlogEdit.tsx';
 
 const router = createBrowserRouter([
   {
@@ -84,12 +87,16 @@ const router = createBrowserRouter([
       },
       {
         path: 'blogs/create',
+        Component: BlogCreate,
         handle: { breadcrumb: 'Create a new blog' },
+        action: blogCreateAction,
       },
       {
         path: 'blogs/:slug/edit',
+        Component: BlogEdit,
         handle: { breadcrumb: 'Edit blog' },
         action: blogEditAction,
+        loader: blogDetailLoader,
       },
       {
         path: 'comments',

@@ -2,25 +2,24 @@ import { blogApi } from '@/api';
 import type { ActionFunction } from 'react-router';
 import { redirect } from 'react-router';
 import { AxiosError } from 'axios';
-import type { ActionResponse } from '@/types';
+import type { ActionResponse, BlogCreateResponse } from '@/types';
 
-const blogEditAction: ActionFunction = async ({ request }) => {
+const blogCreateAction: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  const blogId = formData.get('blogId')!.toString();
   const accessToken = localStorage.getItem('accessToken');
   if (!accessToken) redirect('/');
   try {
-    const response = await blogApi.put(`/blog/${blogId}`, formData, {
+    const response = await blogApi.post('/blog', formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'multipart/form-data',
       },
     });
-    const responseData = response.data;
+    const responseData = response.data as BlogCreateResponse;
     return {
       ok: true,
       data: responseData,
-    } as ActionResponse;
+    } as ActionResponse<BlogCreateResponse>;
   } catch (e) {
     if (e instanceof AxiosError) {
       return {
@@ -32,4 +31,4 @@ const blogEditAction: ActionFunction = async ({ request }) => {
   }
 };
 
-export default blogEditAction;
+export default blogCreateAction;
